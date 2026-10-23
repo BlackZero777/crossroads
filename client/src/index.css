@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 岔路 Crossroads — 暖夜色調（夜裡的小店） */
+:root,
+.dark {
+  --button-outline: rgba(255, 245, 230, 0.1);
+  --badge-outline: rgba(255, 245, 230, 0.05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255, 240, 220, 0.04);
+  --elevate-2: rgba(255, 240, 220, 0.09);
+
+  --background: 26 14% 7%;
+  --foreground: 38 30% 88%;
+  --border: 28 9% 17%;
+  --card: 26 12% 11%;
+  --card-foreground: 38 30% 88%;
+  --card-border: 28 9% 19%;
+  --sidebar: 26 12% 10%;
+  --sidebar-foreground: 38 30% 88%;
+  --sidebar-border: 28 9% 17%;
+  --sidebar-primary: 33 62% 64%;
+  --sidebar-primary-foreground: 26 30% 9%;
+  --sidebar-accent: 30 14% 18%;
+  --sidebar-accent-foreground: 38 30% 88%;
+  --sidebar-ring: 33 62% 64%;
+  --popover: 26 12% 12%;
+  --popover-foreground: 38 30% 88%;
+  --popover-border: 28 9% 20%;
+  --primary: 33 62% 64%;
+  --primary-foreground: 26 30% 9%;
+  --secondary: 28 10% 16%;
+  --secondary-foreground: 38 26% 84%;
+  --muted: 28 10% 15%;
+  --muted-foreground: 34 10% 60%;
+  --accent: 30 14% 18%;
+  --accent-foreground: 38 30% 88%;
+  --destructive: 8 58% 52%;
+  --destructive-foreground: 36 40% 95%;
+  --input: 28 8% 28%;
+  --ring: 33 62% 64%;
+  --chart-1: 33 62% 64%;
+  --chart-2: 43 55% 60%;
+  --chart-3: 18 40% 55%;
+  --chart-4: 200 20% 55%;
+  --chart-5: 280 15% 60%;
+
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-serif: "Noto Serif TC", "PingFang TC", "Songti TC", serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --radius: 0.625rem;
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  --primary-border: hsl(33 52% 50%);
+  --secondary-border: hsl(28 9% 24%);
+  --muted-border: hsl(28 9% 22%);
+  --accent-border: hsl(30 12% 26%);
+  --destructive-border: hsl(8 58% 42%);
+  --sidebar-primary-border: hsl(33 52% 50%);
+  --sidebar-accent-border: hsl(30 12% 26%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-image: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(30 20% 12% / 0.8),
+      transparent
+    );
+    background-attachment: fixed;
+  }
+}
+
+/* 故事段落：襯線字、寬鬆行距，营造夜晚讀故事的氛圍 */
+.story-prose p {
+  @apply font-serif text-foreground/90;
+  line-height: 1.9;
+  text-wrap: pretty;
+}
+
+/* 選項卡片左側的序號圓點 */
+.choice-index {
+  @apply font-serif text-sm shrink-0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid hsl(33 40% 45% / 0.5);
+  color: hsl(33 55% 70%);
+}
+
+/* 線索卡：事實／說法 的標籤 */
+.clue-tag {
+  @apply text-xs px-2 py-0.5 rounded-full inline-block;
+  border: 1px solid hsl(33 40% 50% / 0.45);
+  color: hsl(35 50% 72%);
+}
+
+/* 進場動畫 */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+}
